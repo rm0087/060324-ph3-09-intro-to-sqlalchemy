@@ -1,4 +1,16 @@
-# Flask SQLAlchemy Preview
+# Intro to Flask SQLAlchemy
+
+## Learning Goals
+
+- The flask-sqlalchemy package
+
+- Using the flask_sqlalchemy ORM
+
+- Creating tables using db.Model inheritance and db.Columns
+
+- Creating, migrating, and upgrading databases using alembic commands
+
+- CRUD on models using flask_sqlalchemy
 
 ## Getting Started
 
@@ -19,14 +31,14 @@ Once your basic models are complete, run these commands in order to create and u
 
 ```bash
 flask db init
-flask db migrate
+flask db migrate -m "message goes here"
 flask db upgrade
 ```
 
 If you want to add new models, change a column, or made a mistake, you can always edit `models.py` and then run:
 
 ```bash
-flask db migrate
+flask db migrate -m "message about changes here"
 flask db upgrade
 ```
 
@@ -103,3 +115,26 @@ deli_to_delete = Deli.query.where(Deli.id == 1).first()
 db.session.delete(deli_to_delete)
 db.session.commit()
 ```
+
+## Exercises
+
+1. Create a new model Raccoon with the following attributes:
+
+    | column   | type    |
+    | -------- | ------- |
+    | name     | string  |
+    | age      | integer |
+    | rabid    | boolean |
+    | fav_food | string  |
+
+    Migrate and upgrade with a message!
+
+2. Run `flask shell` and create 3 new Raccoons. Be sure to commit them to the database.
+
+3. Get the Raccoon with an id of 2 and save it to a variable.
+
+4. Update the second Raccoon with a new fav_food of your choice.
+
+5. Delete the last Raccoon.
+
+6. Get all the Raccoons to be sure the last Raccoon no longer exists in the database.
