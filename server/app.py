@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from flask import Flask, request, jsonify, make_request
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
@@ -21,6 +21,10 @@ db.init_app(app)
 @app.get('/')
 def index():
     return "Hello World"
+
+# @app.get('/hamburgers')
+# def all_hamburgers():
+#     return jsonify( Hamburger.query.all() )
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
