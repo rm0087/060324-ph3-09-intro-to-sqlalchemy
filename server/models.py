@@ -1,5 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
+from flask_migrate import Migrate
+
 
 # the metadata here creates naming convensions in the database
 # in this case it handles foreign keys
@@ -13,8 +15,15 @@ db = SQLAlchemy(metadata=metadata)
 
 # hey we're using sqlalchemy and the db.Model for this class
 class Deli(db.Model):
-    pass
+    
+    __tablename__ = "delis_table"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    location = db.Column(db.String)
+    is_open = db.Column(db.Boolean)
+    star_rating = db.Column(db.Integer)
 
 
-class Hamburger(db.Model):
-    pass
+# class Hamburger(db.Model):
+#     pass
